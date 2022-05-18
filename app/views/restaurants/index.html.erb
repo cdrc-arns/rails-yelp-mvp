@@ -1,0 +1,18 @@
+<h1>Restaurants</h1>
+<div class="container">
+  <ul id="restaurants">
+    <% @restaurants.each do |restaurant| %>
+      <li>
+        <div class="restaurant-infos">
+          <%= restaurant.name%> - <%= restaurant.category%> - <%= restaurant.address %> - <%= restaurant.phone_number %>
+        </div>
+        <div class="action-links">
+          <p><%= link_to "Reviews", restaurant_path(restaurant.id) %>- <%= link_to "Edit", edit_restaurant_path(restaurant.id) %> - <%= button_to "Delete", restaurant_path(restaurant), method: :delete, data: { confirm: "Delete?" } %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <div class="create">
+    <p><%= link_to "Add a new restaurant", new_restaurant_path %></p>
+  </div>
+</div>
